@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    
+       
+        <record id="view_move_form_inherit" model="ir.ui.view">
+            <field name="name">account.move.form</field>
+            <field name="model">account.move</field> <!-- Replace 'model.name' with the actual model name -->
+            <field name="inherit_id" ref="account.view_move_form"/> <!-- Replace with the module and view ID you are inheriting -->
+            <field name="arch" type="xml">
+                <!-- Add or modify fields here -->
+                <xpath expr="//field[@name='payment_reference']" position="after">
+                    <field name="appointment_id"/>
+                </xpath>
+                <xpath expr="//group[@name='accounting_info_group']/field[@name='auto_post']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_move_tree_inherit" model="ir.ui.view">
+            <field name="name">account.move.tree</field>
+            <field name="model">account.move</field> <!-- Replace 'model.name' with the actual model name -->
+            <field name="inherit_id" ref="account.view_invoice_tree"/> <!-- Replace with the module and view ID you are inheriting -->
+            <field name="arch" type="xml">
+                <!-- Add or modify fields here -->
+                <xpath expr="//field[@name='invoice_date']" position="after">
+                    <field name="appointment_id"/>
+                </xpath>
+            </field>
+        </record>
+  
+</odoo>

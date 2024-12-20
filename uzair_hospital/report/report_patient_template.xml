@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- QWeb Template -->
+    <template id="report_patient_card">
+        <t t-name="uzair_hospital.report_patient_card">
+            <t t-esc="'How are you?'"/>
+        </t>
+    </template>
+</odoo>

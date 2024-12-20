@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Tree View for Patients -->
+    <record id="view_hospital_patient_tree" model="ir.ui.view">
+        <field name="name">hospital.patient.tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="date_of_birth"/>
+                <field name="gender"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for Patients -->
+    <record id="view_hospital_patient_form" model="ir.ui.view">
+        <field name="name">hospital.patient.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="date_of_birth"/> 
+                            <field name="is_minor"/>
+                            <field name="guardian"/>  
+                        </group>
+                        <group>
+                            <field name="gender"/>
+                            <field name="tag_ids" widget="many2many_tags"/> 
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View for Patients -->
+    <record id="view_patient_search" model="ir.ui.view">
+        <field name="name">hospital.patient.search</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter string="Gender" name="gender_filter" domain="[('gender', '=', 'male')]" />
+                <filter string="Female" name="female_filter" domain="[('gender', '=', 'female')]" />
+                <filter string="Other" name="other_filter" domain="[('gender', '=', 'other')]" />
+                <separator/>
+            </search>
+        </field>
+    </record>
+</odoo>
+
+
+
+

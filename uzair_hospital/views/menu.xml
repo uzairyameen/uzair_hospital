@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Action for Patients (shows Create button) -->
+    <record id="action_hospital_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Action for View Patient (hides Create button) -->
+    <record id="action_view_patient" model="ir.actions.act_window">
+        <field name="name">View Patient</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'create': False}</field>
+    </record>
+
+    <!-- Action for Appointments -->
+    <record id="action_hospital_appointment" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Action for Patient Tags -->
+    <record id="action_patient_tag" model="ir.actions.act_window">
+        <field name="name">Patient Tags</field>
+        <field name="res_model">patient.tag</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Main Menu Item for Hospital -->
+    <menuitem id="hospital_menu" name="Hospital" web_icon="uzair_hospital,static/description/menu.png" sequence="10"/>
+
+    <!-- Submenu for Frontdesk under Hospital -->
+    <menuitem id="hospital_frontdesk_menu" name="Frontdesk" parent="hospital_menu" sequence="1"/>
+
+    <!-- Patients Menu under Frontdesk with Create button enabled -->
+    <menuitem id="hospital_patient_menu" name="Patients" parent="hospital_frontdesk_menu" action="action_hospital_patient" sequence="1"/>
+
+    <!-- View Patient Menu under Frontdesk with Create button disabled -->
+    <menuitem id="hospital_patient_view_menu" name="View Patient" parent="hospital_frontdesk_menu" action="action_view_patient" sequence="2"/>
+
+    <!-- Appointment Menu under Frontdesk -->
+    <menuitem id="hospital_appointment_menu" name="Appointment" parent="hospital_frontdesk_menu" action="action_hospital_appointment" sequence="3"/>
+
+    <!-- Appointment Lines Menu under Frontdesk -->
+    <menuitem id="hospital_appointment_menu_line" name="Appointment Lines" parent="hospital_frontdesk_menu" action="action_hospital_appointment_line" sequence="4"/>
+
+    <!-- Submenu for Billing under Hospital -->
+    <menuitem id="menu_billing" name="Billing" parent="hospital_menu" sequence="2"/>
+
+    <!-- Invoice Menu under Billing -->
+    <menuitem id="menu__hospital_invoice" name="Invoice" parent="menu_billing" action="account.action_move_out_invoice_type" sequence="1"/>
+
+    <!-- Payment Menu under Billing -->
+    <menuitem id="menu__hospital_payment" name="Payment" parent="menu_billing" action="account.action_account_payments" sequence="2"/>
+
+    <!-- Submenu for Configuration under Hospital -->
+    <menuitem id="menu_configuration" name="Configuration" parent="hospital_menu" sequence="3"/>
+
+    <!-- Patient Tags Menu under Configuration -->
+    <menuitem id="menu_patient_tags" name="Patient Tags" parent="menu_configuration" action="action_patient_tag" sequence="1"/>
+</odoo>
